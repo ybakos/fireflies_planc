@@ -22,7 +22,6 @@ class FireFly {
   float scaleFactor = 1.0;
   float initScale = scaleFactor;
 
-
   FireFly() {
     loc = new PVector();
     spd = new PVector();
@@ -33,8 +32,7 @@ class FireFly {
     this.len = len;
     this.ht = ht;
     this.col = col;
-     this.colStroke = colStroke;
-
+    this.colStroke = colStroke;
     loc = new PVector();
     spd = new PVector(random(-.2, 2), random(-.2, .2));
     init();
@@ -50,12 +48,11 @@ class FireFly {
     init();
   }
 
-
   void init() {
     // draw triangle
     float theta = 0.0;
-    float rot = TWO_PI/3.0;
-    for (int i=0; i<3; i++) {
+    float rot = TWO_PI / 3.0;
+    for (int i = 0; i < 3; ++i) {
       float x = cos(theta)*len;
       float y = sin(theta)*ht;
       vecs[i] = new PVector(x, y);
@@ -63,9 +60,8 @@ class FireFly {
     }
     // init motion dynamics
     waveAmp = random(3);
-    waveFreq = random(-PI/30, PI/30);
+    waveFreq = random(-PI / 30, PI / 30);
   }
-
 
   void display() {
     fill(col);
@@ -77,41 +73,35 @@ class FireFly {
     float rot = atan2(wave.y, wave.x);
     rotate(rot);
     beginShape();
-    for (int i=0; i<3; i++) {
+    for (int i = 0; i < 3; ++i) {
       vertex(vecs[i].x, vecs[i].y);
     }
-    //ellipse(0, 0, 3, 3);
     endShape(CLOSE);
     popMatrix();
 
-    if (loc.x>width/2) {
-      loc.x = -width/2;
+    if (loc.x > width / 2) {
+      loc.x = -width / 2;
       //spd.x = random(-spd.x, spd.x);
-    } 
-    else if (loc.x<-width/2) {
-      loc.x = width/2;
+    } else if (loc.x < -width / 2) {
+      loc.x = width / 2;
       //spd.x = random(-spd.x, spd.x);
     }
-
-    if (loc.y>height/2) {
-      loc.y = -height/2;
+    if (loc.y > height / 2) {
+      loc.y = -height / 2;
       //spd.y = random(-spd.y, spd.y);
-    } 
-    else if (loc.y<-height/2) {
-      loc.y = height/2;
+    } else if (loc.y < -height / 2) {
+      loc.y = height / 2;
       //spd.y = random(-spd.y, spd.y);
     }
-
-    if (scaleFactor>initScale) {
+    if (scaleFactor > initScale) {
       scaleFactor*=.2;
     }
   }
 
   void move() {
     waveJitter = random(-3.3, 3.3); // makes fireflies shake
-    wave.x = spd.x + sin(waveTheta)*waveAmp + waveJitter;
-    wave.y = spd.y + cos(waveTheta)*waveAmp + waveJitter;
-
+    wave.x = spd.x + sin(waveTheta) * waveAmp + waveJitter;
+    wave.y = spd.y + cos(waveTheta) * waveAmp + waveJitter;
     //wave.x = sin(waveTheta)*waveAmp + waveJitter;
     //wave.y = cos(waveTheta)*waveAmp + waveJitter;
     // wave.x = mouseX + sin(waveTheta)*waveAmp + waveJitter;
@@ -124,7 +114,6 @@ class FireFly {
     this.scaleFactor = scaleFactor;
   }
 
-
   void setColor(color col) {
     this.col = col;
   }
@@ -132,5 +121,5 @@ class FireFly {
   void setSpd(PVector spd) {
     this.spd.set(spd);
   }
-}
 
+}

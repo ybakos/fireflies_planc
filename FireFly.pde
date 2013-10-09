@@ -23,19 +23,11 @@ class FireFly {
   float initScale = scaleFactor;
 
   FireFly() {
-    loc = new PVector();
-    spd = new PVector();
-    init();
+    this(new PVector(), 0, 0, color(255), color(255), new PVector());
   }
 
   FireFly(float len, float ht, color col, color colStroke) {
-    this.len = len;
-    this.ht = ht;
-    this.col = col;
-    this.colStroke = colStroke;
-    loc = new PVector();
-    spd = new PVector(random(-.2, 2), random(-.2, .2));
-    init();
+    this(new PVector(), len, ht, col, colStroke, new PVector(random(-.2, 2), random(-.2, .2)));
   }
 
   FireFly(PVector loc, float len, float ht, color col, color colStroke, PVector spd) {

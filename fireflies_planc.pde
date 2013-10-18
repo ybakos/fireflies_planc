@@ -21,8 +21,9 @@ float ampData, freqData;
 float timeSlice;
 float thetaFade;
 
-int NUMBER_OF_FLIES = 24;
+int NUMBER_OF_FLIES = 400;
 FireFly[] ffs = new FireFly[NUMBER_OF_FLIES];
+boolean fliesShouldBeCrazy = false;
 
 // visual configuration
 final int SCREEN_WIDTH = 1280;
@@ -58,6 +59,7 @@ void draw() {
   endShape();
   for (int i = 0; i < NUMBER_OF_FLIES; ++i) {
     noStroke();
+    if (fliesShouldBeCrazy) ffs[i].goNuts();
     ffs[i].display();
     ffs[i].move();
   }
@@ -66,4 +68,12 @@ void draw() {
 
 void mousePressed() {
   loop();
+}
+
+void keyPressed() {
+  if (key == 'q') {
+    fliesShouldBeCrazy = true;
+  } else if (key == 'w') {
+    fliesShouldBeCrazy = false;
+  }
 }

@@ -1,7 +1,7 @@
 // Fireflies that react to OSC (Open Sound Control) data received
 // over the network.
 //
-// Ira Greenberg
+// Ira Greenberg, Yong Bakos.
 
 import oscP5.*;
 import netP5.*;
@@ -14,10 +14,6 @@ final int REMOTE_PORT = 12001;
 OscP5 server;
 NetAddress myRemoteLocation;
 
-String[] maxVarNames = {"fFlies", "trackNum", "flagData", "ampData", "freqData"};
-
-int trackNum, flagData; // (-1, 0, 1)
-float ampData, freqData;
 float timeSlice;
 float thetaFade;
 
@@ -59,7 +55,6 @@ void draw() {
   endShape();
   for (int i = 0; i < NUMBER_OF_FLIES; ++i) {
     noStroke();
-    if (fliesShouldBeCrazy) ffs[i].goNuts();
     ffs[i].display();
     ffs[i].move();
   }

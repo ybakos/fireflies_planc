@@ -3,27 +3,17 @@
 //
 // Ira Greenberg, Yong Bakos.
 
-import oscP5.*;
-import netP5.*;
-
-// OSC and Network config
-final int LOCAL_PORT = 12001;
-final String REMOTE_IP_ADDRESS = "127.0.0.1";
-final int REMOTE_PORT = 12001;
-
-OscP5 server;
-NetAddress myRemoteLocation;
 
 float timeSlice;
 float thetaFade;
 
-int NUMBER_OF_FLIES = 400;
+int NUMBER_OF_FLIES = 1200;
 FireFly[] ffs = new FireFly[NUMBER_OF_FLIES];
 boolean fliesShouldBeCrazy = false;
 
 // visual configuration
-final int SCREEN_WIDTH = 1280;
-final int SCREEN_HEIGHT = 960;
+final int SCREEN_WIDTH = 1920;
+final int SCREEN_HEIGHT = 1080;
 final color black = color(0, 0, 0);
 final color white = color(255, 255, 255);
 final color yellow = color(255, 255, 0);
@@ -40,10 +30,11 @@ void setup() {
   }
   startOSC();
   noLoop(); // wait for mouse click
+  noCursor();
 }
 
 void draw() {
-  float alph = sin(thetaFade) * (millis() * timeSlice);
+  float alph = 0; //sin(thetaFade) * (millis() * timeSlice);
   background(0);
   translate(width / 2, height / 2);
   beginShape();

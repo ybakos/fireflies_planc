@@ -114,14 +114,4 @@ class FireFly {
     this.spd.set(spd);
   }
 
-  void goNuts() {
-    this.scaleFactor = random(0, 20);
-    this.col = color(random(150, 255), random(100, 190), random(100, 200));
-  }
-
-  void calmDown() {
-    this.scaleFactor = 1.0;
-    this.col = gold;
-  }
-
 }

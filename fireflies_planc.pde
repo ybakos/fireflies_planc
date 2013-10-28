@@ -3,13 +3,11 @@
 //
 // Ira Greenberg, Yong Bakos.
 
-
 float timeSlice;
 float thetaFade;
 
 int NUMBER_OF_FLIES = 1200;
 FireFly[] ffs = new FireFly[NUMBER_OF_FLIES];
-boolean fliesShouldBeCrazy = false;
 
 // visual configuration
 final int SCREEN_WIDTH = 1920;
@@ -39,7 +37,7 @@ void draw() {
   translate(width / 2, height / 2);
   beginShape();
   stroke(255, 255, 200, alph * 0.35);
-  noFill();
+  fill(150);
   for (int i = 0; i < NUMBER_OF_FLIES; ++i) {
     vertex(ffs[i].loc.x, ffs[i].loc.y);
   }
@@ -54,12 +52,4 @@ void draw() {
 
 void mousePressed() {
   loop();
-}
-
-void keyPressed() {
-  if (key == 'q') {
-    fliesShouldBeCrazy = true;
-  } else if (key == 'w') {
-    fliesShouldBeCrazy = false;
-  }
 }
